@@ -18,11 +18,18 @@ export class MessageService {
     return getPaginatedResult<Message[]>(this.baseUrl + 'messages' , params , this.http);
   }
 
-  getMessageThread(username: string){
-    console.log("girdim buraya")
-    return this.http.get<Message[]>(this.baseUrl + 'messages/thread/' + username);
-
-
+  getMessageThread(userName: string){
+    console.log(userName)
+    return this.http.get<Message[]>(this.baseUrl + 'messages/thread/' + userName);
   }
+
+  sendMessage(userName : string , content : string){
+    return this.http.post<Message>(this.baseUrl + 'messages' , {recipientUsername : userName , content});
+  }
+
+  deleteMessage(id : number){
+    return this.http.delete(this.baseUrl + 'messages/' + id);
+  }
+
 
 }
