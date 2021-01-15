@@ -47,7 +47,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   private getRolesArray(user) {
-    console.log(user);
+
     const roles = [];
     const userRoles = user.roles;
     const availableRoles: any[] = [
