@@ -39,12 +39,12 @@ export class AccountService {
 
   }
 
-  setCurrentUser(user :User){
+  setCurrentUser(user: User){
     user.roles = [];
     const roles = this.getDecodedToken(user.token).role;
+    console.log(roles);
     Array.isArray(roles) ? user.roles = roles : user.roles.push(roles);
     localStorage.setItem('user' , JSON.stringify(user));
-
     this.currentUserSource.next(user);
   }
 
